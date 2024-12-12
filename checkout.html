@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Pokémon E-Commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for Checkout Page */
+        body {
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cart-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+        }
+
+        .cart-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgba(255, 182, 193, 1);
+        }
+
+        .total-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgba(255, 182, 193, 1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="container">
+        <!-- Checkout Header -->
+        <h1 class="text-4xl font-bold text-center text-pink-500 mb-6">Checkout</h1>
+
+        <!-- Checkout Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Cart Summary -->
+            <div class="cart-box p-6">
+                <div class="cart-header">Your Cart</div>
+                <div id="cartItemsCheckout" class="space-y-4 mt-4"></div>
+                <div class="total-price mt-4">
+                    Total: $<span id="totalPriceCheckout">0.00</span>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-pink-500 mb-4">Billing Information</h2>
+                <form id="checkoutForm">
+                    <!-- Name -->
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-2 border border-pink-300 rounded-lg" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full p-2 border border-pink-300 rounded-lg" required>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-4">
+                        <label for="address" class="block text-gray-700">Shipping Address</label>
+                        <textarea id="address" name="address" rows="3" class="w-full p-2 border border-pink-300 rounded-lg" required></textarea>
+                    </div>
+
+                    <!-- Payment Information -->
+                    <div class="mb-4">
+                        <label for="cardNumber" class="block text-gray-700">Credit Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" class="w-full p-2 border border-pink-300 rounded-lg" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="expDate" class="block text-gray-700">Expiration Date</label>
+                        <input type="month" id="expDate" name="expDate" class="w-full p-2 border border-pink-300 rounded-lg" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cvv" class="block text-gray-700">CVV</label>
+                        <input type="text" id="cvv" name="cvv" class="w-full p-2 border border-pink-300 rounded-lg" required>
+                    </div>
+
+                    <div class="mt-6 text-center">
+                        <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg w-full">Complete Purchase</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cartItemsContainer = document.getElementById('cartItemsCheckout');
+        const totalPriceSpan = document.getElementById('totalPriceCheckout');
+
+        // Retrieve cart data from sessionStorage
+        const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+        let totalPrice = sessionStorage.getItem('totalPrice') || 0;
+
+        // Simulate a random total price if not provided
+        if (!totalPrice || totalPrice == 0) {
+            totalPrice = (Math.random() * (100 - 10) + 10).toFixed(2);  // Random total between $10 and $100
+        }
+
+        // Function to display the cart items in the checkout
+        function displayCartItems() {
+            cartItemsContainer.innerHTML = ''; // Clear the previous cart items display
+
+            // If there are no cart items, display a message
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cartItems.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('cart-item');
+                    itemDiv.innerHTML = `<span>${item.name}</span><span>$${item.price}</span>`;
+                    cartItemsContainer.appendChild(itemDiv);
+                });
+            }
+
+            // Display the total price
+            totalPriceSpan.innerText = `${totalPrice}`;
+        }
+
+        // Call the function to display the cart items
+        displayCartItems();
+    </script>
+
+    <!-- Include the cart.js script if needed -->
+    <script src="cart.js"></script>
+</body>
+</html>

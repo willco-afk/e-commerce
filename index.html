@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant E-Commerce Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom Pulsating Neon Effect for the Banner */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 182, 193, 0.7), 0 0 10px rgba(255, 182, 193, 0.7), 0 0 15px rgba(255, 182, 193, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 182, 193, 1), 0 0 30px rgba(255, 182, 193, 1), 0 0 40px rgba(255, 182, 193, 1);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(255, 182, 193, 0.7), 0 0 10px rgba(255, 182, 193, 0.7), 0 0 15px rgba(255, 182, 193, 0.7);
+            }
+        }
+
+        /* Custom Pulsating Border for Product Boxes */
+        @keyframes borderPulse {
+            0% {
+                border-color: rgba(255, 182, 193, 0.7);
+            }
+            50% {
+                border-color: rgba(255, 182, 193, 1);
+            }
+            100% {
+                border-color: rgba(255, 182, 193, 0.7);
+            }
+        }
+
+        .banner {
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .product {
+            animation: borderPulse 1.5s infinite alternate;
+            margin-bottom: 20px; /* Space below each product box */
+        }
+
+        /* Prevent horizontal overflow */
+        body {
+            margin: 0; /* Remove default body margin */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            background-color: #f9fafb; /* Light background color */
+            color: #333; /* Dark text for better readability */
+        }
+
+        .container {
+            height: auto; /* Allow container to fit content */
+            padding: 0 1rem; /* Add padding without causing overflow */
+            max-width: 100%; /* Ensure the container uses full available width */
+        }
+
+        /* Full Width for Main Content */
+        .main-content {
+            width: 100%; /* Ensure full width for the main content */
+        }
+
+        /* Shopping Cart Box Styles */
+        .cart-box {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: auto; /* Auto height to fit content */
+            width: 210px; /* Fixed width for the cart */
+        }
+
+        .cart-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgba(255, 182, 193, 1);
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none; /* Remove border for last item */
+        }
+
+        .total-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            color: rgba(255, 182, 193, 1);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="container mx-auto grid grid-cols-4 relative">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar bg-gradient-to-b from-pink-100 to-pink-300 p-6 rounded-lg hidden md:block sidebar-glow relative">
+            <div class="absolute top-0 left-0 w-full h-full bg-opacity-25 bg-pink-500 rounded-lg"></div>
+
+    <!-- Particle Effects -->
+    <div class="absolute top-0 left-0 w-2 h-2 bg-pink-400 rounded-full animate-ping opacity-50" style="top: 10%; left: 15%;"></div>
+    <div class="absolute top-6 right-8 w-3 h-3 bg-pink-500 rounded-full animate-ping opacity-75" style="top: 30%; left: 40%;"></div>
+    <div class="absolute top-12 left-5 w-2 h-2 bg-pink-600 rounded-full animate-ping opacity-60" style="top: 50%; left: 60%;"></div>
+    <div class="absolute bottom-4 right-3 w-4 h-4 bg-pink-300 rounded-full animate-ping opacity-40" style="top: 70%; left: 80%;"></div>
+    <div class="absolute w-6 h-6 bg-pink-200 rounded-full animate-ping opacity-30" style="top: 90%; left: 20%;"></div>
+
+    <!-- Text Content -->
+    <h2 class="text-4xl font-extrabold text-pink-600 text-center tracking-tight mt-8 mb-4 drop-shadow-xl">
+        Promotions
+    </h2>
+    <p class="text-xl text-gray-800 mt-2 font-medium leading-relaxed hover:text-pink-700 transition duration-300 ease-in-out drop-shadow-lg">
+        Catch the latest Pokémon! Get 50% off on Pikachu plushies! 
+        <br> Buy 1 Get 1 Free on all Charizard figurines! 
+        <br> Special offer: Free shipping on orders over $50!
+
+<!-- Placeholder Tabs -->
+<div class="mt-6">
+    <h3 class="text-pink-500 text-sm font-semibold">Quick Links</h3>
+    <ul class="space-y-3 mt-2">
+        <li>
+            <button class="w-full text-left text-gray-800 hover:text-pink-600 py-2 px-4 rounded-lg bg-white border-2 border-transparent hover:border-gradient-to-r hover:from-pink-500 hover:to-white hover:border-2">Latest Products</button>
+        </li>
+        <li>
+            <button class="w-full text-left text-gray-800 hover:text-pink-600 py-2 px-4 rounded-lg bg-white border-2 border-transparent hover:border-gradient-to-r hover:from-pink-500 hover:to-white hover:border-2">Best Sellers</button>
+        </li>
+        <li>
+            <button class="w-full text-left text-gray-800 hover:text-pink-600 py-2 px-4 rounded-lg bg-white border-2 border-transparent hover:border-gradient-to-r hover:from-pink-500 hover:to-white hover:border-2">Customer Reviews</button>
+        </li>
+    </ul>
+</div>
+
+            <!-- Widget Section -->
+            <div class="mt-6">
+                <h3 class="text-pink-500 text-sm font-semibold">Widgets</h3>
+                <div class="bg-white p-3 mt-2 rounded-lg shadow-md">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-gray-800 text-sm">Top Offers</span>
+                        <span class="text-pink-500 text-xs font-semibold">NEW</span>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="text-gray-600 text-xs">10% off on your first purchase</li>
+                        <li class="text-gray-600 text-xs">Free Gift with every $100 purchase</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-span-2 p-4 flex flex-col main-content">
+            <!-- Full-Width Banner Section -->
+            <div class="banner bg-gradient-to-r from-pink-400 to-pink-600 rounded-lg text-center py-6">
+                <span class="text-lg font-semibold text-white">Welcome to the Ultimate Pokémon Toy & Plushie Store! Catch the Best Deals!</span>
+            </div>
+
+            
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4" id="productGrid">
+                <!-- Product cards will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Shopping Cart Box -->
+        <div class="cart-box fixed top-0 right-0 p-4 bg-white rounded-lg shadow-lg w-80 mt-10">
+            <div class="cart-header font-bold text-pink-500">Your Cart</div>
+            <div id="cartItems"></div>
+            <div class="total-price text-pink-500 mt-2">Total: $<span id="totalPrice">0.00</span></div>
+            <div class="text-center mt-4">
+                <strong>Total Items: <span id="cartCount">0</span></strong>
+            </div>
+            <!-- Checkout Button -->
+            <div class="mt-4 text-center">
+                <a href="checkout.html" class="inline-block w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg">
+                    Proceed to Checkout
+                </a>
+            </div>
+        </div>
+
+    <script>
+        // JavaScript to generate product cards and manage cart
+        const productGrid = document.getElementById('productGrid');
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const totalPriceSpan = document.getElementById('totalPrice');
+    
+        // Array to hold cart items
+        let cartItems = [];
+    
+        // Fixed product data with prices
+        const pokemonData = [
+            { name: "Pikachu Plushie", imagePath: "ppl.png", price: 19.99 },
+            { name: "Charizard Figurine", imagePath: "ccf.png", price: 24.99 },
+            { name: "Bulbasaur Toy", imagePath: "bbs.png", price: 14.99 },
+            { name: "Squirtle Water Bottle", imagePath: "sqt.png", price: 12.99 },
+            { name: "Eevee Evolution Set", imagePath: "eve.png", price: 29.99 },
+            { name: "Jigglypuff Sleep Mask", imagePath: "ji.png", price: 9.99 },
+            { name: "Gengar Glow in the Dark", imagePath: "ggar.png", price: 19.99 },
+            { name: "Snorlax Sleeping Bag", imagePath: "snow.png", price: 49.99 },
+            { name: "Meowth Coin Bank", imagePath: "mth.png", price: 15.99 },
+            { name: "Psyduck Stress Ball", imagePath: "psy.png", price: 6.99 },
+            { name: "Mewtwo Action Figure", imagePath: "m2.png", price: 34.99 },
+            { name: "Lapras Plush Toy", imagePath: "la.png", price: 21.99 },
+            { name: "Charmander Keychain", imagePath: "ch.png", price: 7.99 },
+            { name: "Pokeball USB Charger", imagePath: "pk.png", price: 14.99 },
+            { name: "Ditto Transforming Toy", imagePath: "dtt.png", price: 19.99 }
+        ];
+    
+        // Function to generate product cards dynamically
+        const generateProducts = () => {
+            // Loop through each product
+            for (let index = 0; index < pokemonData.length; index++) {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product', 'bg-white', 'p-4', 'rounded-lg', 'transition', 'hover:shadow-lg', 'hover:bg-gray-100', 'border', 'border-pink-300', 'relative');
+    
+                // Create a button to add the product to the cart
+                const addToCartButton = document.createElement('button');
+                addToCartButton.innerText = 'Add to Cart';
+                addToCartButton.classList.add('mt-2', 'bg-pink-500', 'hover:bg-pink-600', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded');
+                addToCartButton.onclick = () => addToCart(pokemonData[index].name, pokemonData[index].price);
+    
+                productDiv.innerHTML = `
+                    <img src="${pokemonData[index].imagePath}" alt="${pokemonData[index].name}" class="w-full h-40 object-cover rounded">
+                    <div class="product-name mt-2 text-center">${pokemonData[index].name}</div>
+                    <div class="product-price text-center text-pink-300">$${pokemonData[index].price.toFixed(2)}</div>
+                `;
+                productDiv.appendChild(addToCartButton);
+                productGrid.appendChild(productDiv);
+            }
+        };
+    
+        // Function to add a product to the cart
+        const addToCart = (name, price) => {
+            const priceNumber = price; // Use the correct price from the data
+            cartItems.push({ name, price: `$${priceNumber.toFixed(2)}` });
+            updateCartDisplay();
+            updateTotalPrice(priceNumber);
+        };
+    
+        // Function to update the cart display
+        const updateCartDisplay = () => {
+            cartItemsContainer.innerHTML = ''; // Clear current cart items
+            cartCount.innerText = cartItems.length; // Update cart count
+    
+            // Add each item to the cart display
+            cartItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item', 'bg-gray-100', 'p-2', 'rounded', 'flex', 'justify-between');
+                itemDiv.innerHTML = `<span>${item.name}</span><span>${item.price}</span>`;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        };
+    
+        // Function to update total price
+        const updateTotalPrice = (price) => {
+            const currentTotal = parseFloat(totalPriceSpan.innerText);
+            totalPriceSpan.innerText = (currentTotal + price).toFixed(2);
+        };
+    
+        // Generate the products on page load
+        generateProducts();
+    </script>
+
+<!-- Inserted Login & Sign Up Buttons Container -->
+<div class="fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
+    <!-- Particle Background -->
+    <div class="absolute w-3 h-3 bg-pink-300 rounded-full animate-ping opacity-75" style="top: 5%; left: 5%;"></div>
+    <div class="absolute w-3 h-3 bg-pink-300 rounded-full animate-ping opacity-75" style="top: 25%; left: 15%;"></div>
+    <div class="absolute w-3 h-3 bg-pink-300 rounded-full animate-ping opacity-75" style="top: 45%; left: 25%;"></div>
+    <div class="absolute w-3 h-3 bg-pink-300 rounded-full animate-ping opacity-75" style="top: 65%; left: 35%;"></div>
+    <div class="absolute w-3 h-3 bg-pink-300 rounded-full animate-ping opacity-75" style="top: 85%; left: 45%;"></div>
+
+    <!-- Buttons Wrapper -->
+    <div class="flex flex-col space-y-4 bg-white text-pink-500 p-6 rounded-lg shadow-lg">
+        <!-- Login Button -->
+        <a href="login.html">
+            <button class="bg-pink-100 text-pink-500 px-6 py-3 rounded-lg shadow-md hover:bg-pink-300 hover:text-white transition duration-300 ease-in-out">
+                Log In
+            </button>
+        </a>
+
+        <!-- Sign Up Button -->
+        <a href="signup.html">
+            <button class="bg-pink-100 text-pink-500 px-6 py-3 rounded-lg shadow-md hover:bg-pink-300 hover:text-white transition duration-300 ease-in-out">
+                Sign Up
+            </button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
